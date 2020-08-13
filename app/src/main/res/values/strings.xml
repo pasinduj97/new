@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MadProject</string>
+    <string name="username">JohnDoe</string>
+    <string name="location">Colombo,SL</string>
+    <string name="quizestopic">My Quizes</string>
+    <string name="category1">Science</string>
+    <string name="category2">Maths</string>
+    <string name="category3">Technology</string>
+    <string name="category4">Sports</string>
+    <string name="category5">Politics</string>
+    <string name="category6">Law</string>
+</resources>
