@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/dialog_background"
+    android:layout_height="match_parent"
+    tools:context=".AddNewReference">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/set_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Add New Reference"
+        android:background="@color/categorytextcolor"
+        app:titleTextColor="@color/cardtxt"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="4dp"
+        app:navigationIcon="@drawable/backwardarrow" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="32dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="120dp"
+            android:fontFamily="@font/robotobold"
+            android:hint="@string/adddesc"
+            android:textColorHint="@color/navheadcol"
+            android:textSize="16dp" />
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="170dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="160dp"
+            app:cardElevation="10dp">
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/registerBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="610dp"
+            android:layout_marginRight="40dp"
+            app:cardBackgroundColor="@color/navheadcol"
+            app:cardElevation="10dp"
+            app:cardCornerRadius="25dp" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textRegister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/breeserifregular"
+                    android:text="@string/add"
+                    android:textColor="@color/categorytextcolor"
+                    android:textSize="25dp"
+                    android:padding="10dp"
+                    android:layout_centerHorizontal="true"
+                    />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

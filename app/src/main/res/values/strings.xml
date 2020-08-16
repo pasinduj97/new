@@ -9,4 +9,67 @@
     <string name="category4">Sports</string>
     <string name="category5">Politics</string>
     <string name="category6">Law</string>
+    <string name="setstoolbar">Science Set</string>
+    <string name="addcatpopup">Add Category</string>
+    <string name="addbuttonpopup">Add</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="catadmin1">Automobile</string>
+    <string name="catadmin2">Marketing</string>
+    <string name="catadmin3">Electronics</string>
+    <string name="catadmin4">Engineering</string>
+    <string name="catadmin8">Testing</string>
+    <string name="catadmin5">Wiring</string>
+    <string name="catadmin6">Bio Technology</string>
+    <string name="catadmin7">Agriculture</string>
+    <string name="setadmin1">Set 1</string>
+    <string name="setadmin2">Set 2</string>
+    <string name="setadmin3">Set 3</string>
+    <string name="setadmin4">Set 4</string>
+    <string name="setadmin8">Set 8</string>
+    <string name="setadmin5">Set 5</string>
+    <string name="setadmin6">Set 6</string>
+    <string name="setadmin7">Set 7</string>
+    <string name="addquizcat">Add New Quiz Category</string>
+    <string name="addquizset">Add New Set</string>
+    <string name="mancat">Manage Category</string>
+    <string name="manset">Manage Sets </string>
+    <string name="editcatpop">Edit Category Name</string>
+    <string name="editcatpophint">Automobile</string>
+    <string name="up">Update</string>
+
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_login">Login</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_confirm_password">Confirm Password</string>
+
+    <string name="ref">References</string>
+    <string name="deletetext">Do you want to delete this ?</string>
+    <string name="negative">No</string>
+    <string name="positive">Yes</string>
+    <string name="winnerslogan">Bravo!</string>
+    <string name="score">score</string>
+    <string name="done">Done</string>
+    <string name="ref1">Auto Pilot</string>
+    <string name="ref2">Programming</string>
+    <string name="ref3">Problem Solving</string>
+    <string name="ref4">Algorithm</string>
+    <string name="ref5">Mobile Applications</string>
+    <string name="reftit">Manage References</string>
+    <string name="addnewref">Add New References</string>
+
+    <string name="question">Question</string>
+    <string name="option1">Option 1</string>
+    <string name="option2">Option 2</string>
+    <string name="option3">Option 3</string>
+    <string name="option4">Option 4</string>
+    <string name="add">Add</string>
+    <string name="update">Update</string>
+    <string name="adddesc">Add Description</string>
+    <string name="editdesc">Edit Description</string>
+
+
+
 </resources>

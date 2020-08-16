@@ -1,0 +1,429 @@
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/gradle.xml	(revision a56c22e183e79995ced4125fca113f664521f543)
++++ .idea/gradle.xml	(date 1597380804542)
+@@ -1,5 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="GradleMigrationSettings" migrationVersion="1" />
+   <component name="GradleSettings">
+     <option name="linkedExternalProjectsSettings">
+       <GradleProjectSettings>
+Index: app/src/main/res/layout/set_item_layout.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/set_item_layout.xml	(date 1597384321759)
++++ app/src/main/res/layout/set_item_layout.xml	(date 1597384321759)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="utf-8"?>
++<LinearLayout
++    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="80dp"
++    android:layout_height="80dp"
++    android:orientation="vertical"
++    android:gravity="center"
++    android:background="@drawable/round_corner"
++    >
++
++    <TextView
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="1"
++        android:id="@+id/setNo_tv"
++        android:textStyle="bold"
++        android:textColor="@color/categorytextcolor"
++        android:textSize="20dp"></TextView>
++
++
++</LinearLayout>
+\ No newline at end of file
+Index: app/src/main/res/drawable/round_corner.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/round_corner.xml	(date 1597332996804)
++++ app/src/main/res/drawable/round_corner.xml	(date 1597332996804)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
++
++    <corners android:radius="3000dp"></corners>
++    <solid android:color="@color/usernamecolor"></solid>
++</shape>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision a56c22e183e79995ced4125fca113f664521f543)
++++ app/src/main/AndroidManifest.xml	(date 1597385456315)
+@@ -9,14 +9,18 @@
+         android:roundIcon="@mipmap/ic_launcher_round"
+         android:supportsRtl="true"
+         android:theme="@style/AppTheme">
+-        <activity android:name=".SetsActivity"></activity>
+-        <activity android:name=".UserProfileActivity" />
+-        <activity android:name=".MainActivity">
++        <activity android:name=".SetsActivity"
++            android:parentActivityName=".UserProfileActivity">
++
++        </activity>
++        <activity android:name=".UserProfileActivity" >
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+-
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
++        </activity>>
++        <activity android:name=".MainActivity">
++
+         </activity>
+     </application>
+ 
+Index: app/src/main/res/layout/activity_sets.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_sets.xml	(revision a56c22e183e79995ced4125fca113f664521f543)
++++ app/src/main/res/layout/activity_sets.xml	(date 1597385654350)
+@@ -1,9 +1,40 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".SetsActivity">
++    android:orientation="vertical"
++    tools:context=".SetsActivity"
++    >
++
++    <androidx.appcompat.widget.Toolbar
++        android:id="@+id/set_toolbar"
++        android:layout_width="409dp"
++        android:layout_height="wrap_content"
++        app:title="Science set"
++        app:titleTextColor="@color/settoolbartxtviewcolor"
++        android:minHeight="?attr/actionBarSize"
++        android:theme="?attr/actionBarTheme"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:navigationIcon="@drawable/navback" />
++
++    <GridView
++        android:layout_width="match_parent"
++        android:layout_height="0dp"
++        android:id="@+id/sets_gridview"
++        android:layout_weight="1"
++        android:gravity="center"
++        android:columnWidth="100dp"
++        android:numColumns="auto_fit"
++        android:horizontalSpacing="16dp"
++        android:verticalSpacing="16dp"
++        android:padding="16dp"
++
++        ></GridView>
++
++
+ 
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
++</LinearLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/madproject/SetsActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/madproject/SetsActivity.java	(revision a56c22e183e79995ced4125fca113f664521f543)
++++ app/src/main/java/com/example/madproject/SetsActivity.java	(date 1597388159402)
+@@ -1,14 +1,59 @@
+ package com.example.madproject;
+ 
++import androidx.annotation.NonNull;
+ import androidx.appcompat.app.AppCompatActivity;
++import androidx.appcompat.widget.Toolbar;
+ 
++import android.content.Intent;
+ import android.os.Bundle;
++import android.view.MenuItem;
++import android.widget.GridView;
+ 
+ public class SetsActivity extends AppCompatActivity {
+ 
++
++    private Toolbar myToolbar;
++    private GridView sets_grid;
++
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_sets);
++
++        Intent intent = getIntent();
++
++
++        Toolbar toolbar = findViewById(R.id.set_toolbar);
++        setSupportActionBar(toolbar);
++
++        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
++
++        sets_grid = findViewById(R.id.sets_gridview);
++
++        SetsAdapter setsAdapter = new SetsAdapter(7);
++        sets_grid.setAdapter(setsAdapter);
++
++
++
++
++
++
++
++
+     }
++
++
++    @Override
++    public boolean onOptionsItemSelected(MenuItem menuItem) {
++        switch (menuItem.getItemId()) {
++            case android.R.id.home:
++                Intent homeIntent = new Intent(this, UserProfileActivity.class);
++                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
++                startActivity(homeIntent);
++        }
++        return (super.onOptionsItemSelected(menuItem));
++    }
++
++
++
+ }
+\ No newline at end of file
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/strings.xml	(revision a56c22e183e79995ced4125fca113f664521f543)
++++ app/src/main/res/values/strings.xml	(date 1597329797741)
+@@ -9,4 +9,5 @@
+     <string name="category4">Sports</string>
+     <string name="category5">Politics</string>
+     <string name="category6">Law</string>
++    <string name="setstoolbar">Science Set</string>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/values/styles.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/styles.xml	(revision a56c22e183e79995ced4125fca113f664521f543)
++++ app/src/main/res/values/styles.xml	(date 1597386322229)
+@@ -1,10 +1,14 @@
+ <resources>
+     <!-- Base application theme. -->
+-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
++    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+         <!-- Customize your theme here. -->
+         <item name="colorPrimary">@color/colorPrimary</item>
+         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+         <item name="colorAccent">@color/colorAccent</item>
+     </style>
++    <style name="AppTheme.NoActionBar">
++        <item name="windowActionBar">false</item>
++        <item name="windowNoTitle">true</item>
++    </style>
+ 
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/colors.xml	(revision a56c22e183e79995ced4125fca113f664521f543)
++++ app/src/main/res/values/colors.xml	(date 1597329982318)
+@@ -5,5 +5,6 @@
+     <color name="colorAccent">#03DAC5</color>
+     <color name="usernamecolor">#4CB3AA</color>
+     <color name="categorytextcolor">#FFFFFF</color>
++    <color name="settoolbartxtviewcolor">#707070</color>
+ 
+ </resources>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(date 1597328540888)
++++ .idea/vcs.xml	(date 1597328540888)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/java/com/example/madproject/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/madproject/MainActivity.java	(revision a56c22e183e79995ced4125fca113f664521f543)
++++ app/src/main/java/com/example/madproject/MainActivity.java	(date 1597381365940)
+@@ -2,13 +2,19 @@
+ 
+ import androidx.appcompat.app.AppCompatActivity;
+ 
++import android.content.Intent;
+ import android.os.Bundle;
++import android.view.View;
++import android.widget.Button;
+ 
+ public class MainActivity extends AppCompatActivity {
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_user_profile);
++        setContentView(R.layout.activity_main);
++
++
++
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_user_profile.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_user_profile.xml	(revision a56c22e183e79995ced4125fca113f664521f543)
++++ app/src/main/res/layout/activity_user_profile.xml	(date 1597388615014)
+@@ -74,14 +74,16 @@
+         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+ 
+     <ImageView
+-        android:id="@+id/imageView8"
++        android:id="@+id/science"
+         android:layout_width="182dp"
+         android:layout_height="126dp"
+         android:layout_marginStart="16dp"
+         android:layout_marginTop="32dp"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/textView3"
+-        app:srcCompat="@drawable/science" />
++        app:srcCompat="@drawable/science"
++        android:clickable="true"
++        android:focusable="true"/>
+ 
+     <ImageView
+         android:id="@+id/imageView11"
+@@ -114,7 +116,8 @@
+ 
+         app:layout_constraintStart_toEndOf="@+id/imageView15"
+         app:layout_constraintTop_toBottomOf="@+id/textView3"
+-        app:srcCompat="@drawable/law" />
++        app:srcCompat="@drawable/law"
++        />
+ 
+     <ImageView
+         android:id="@+id/imageView9"
+@@ -124,7 +127,7 @@
+         android:layout_marginTop="140dp"
+         android:layout_marginEnd="16dp"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintStart_toEndOf="@+id/imageView8"
++        app:layout_constraintStart_toEndOf="@+id/science"
+         app:layout_constraintTop_toBottomOf="@+id/imageView3"
+         app:srcCompat="@drawable/maths" />
+ 
+@@ -160,8 +163,8 @@
+         android:textColor="@color/categorytextcolor"
+         android:textSize="14dp"
+         android:textStyle="normal"
+-        app:layout_constraintStart_toStartOf="@+id/imageView8"
+-        app:layout_constraintTop_toTopOf="@+id/imageView8" />
++        app:layout_constraintStart_toStartOf="@+id/science"
++        app:layout_constraintTop_toTopOf="@+id/science" />
+ 
+     <TextView
+         android:id="@+id/textView6"
+@@ -214,11 +217,12 @@
+         android:id="@+id/textView10"
+         android:layout_width="46dp"
+         android:layout_height="18dp"
+-        android:layout_marginStart="72dp"
++        android:layout_marginStart="69dp"
+         android:layout_marginTop="64dp"
+         android:text="@string/category6"
+         android:textColor="@color/categorytextcolor"
+         android:textSize="14dp"
++        android:textAlignment="center"
+         app:layout_constraintStart_toStartOf="@+id/imageView16"
+         app:layout_constraintTop_toTopOf="@+id/imageView16" />
+ 
+Index: app/src/main/java/com/example/madproject/UserProfileActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/madproject/UserProfileActivity.java	(revision a56c22e183e79995ced4125fca113f664521f543)
++++ app/src/main/java/com/example/madproject/UserProfileActivity.java	(date 1597388908934)
+@@ -2,13 +2,34 @@
+ 
+ import androidx.appcompat.app.AppCompatActivity;
+ 
++import android.content.Intent;
+ import android.os.Bundle;
++import android.view.MotionEvent;
++import android.view.View;
++import android.widget.ImageView;
+ 
+ public class UserProfileActivity extends AppCompatActivity {
+ 
++    private ImageView imageView;
++
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_user_profile);
++
++        imageView = (ImageView) findViewById(R.id.science);
++        imageView.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++
++                Intent intent = new Intent(view.getContext(),SetsActivity.class);
++
++                startActivity(intent);
++            }
++        });
++
++       
++
++
+     }
+ }
+\ No newline at end of file
+diff --git app/src/main/res/drawable-v24/navback.png app/src/main/res/drawable-v24/navback.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..21e043a4768b2bf95837cb17116a28b5ce3f9dd0
+GIT binary patch
+literal 203
+zc%17D@N?(olHy`uVBq!ia0vp^0wB!61|;P_|4#%`EX7WqAsj$Z!;#Vf<TrV`IEGmG
+zC#M`>-eb1bD<LIe!~Iv{(>lB*mGw9$q^Y^J{S>HlJFdHLA^V1vN3$3<J*)pODYX4(
+ztFFQ=)+HHiyLoS>1eq?DaOg|h!T2PLO}atq)(<7o-7-(v8qO>|!EMk!F`MJ-qKPrn
+y1MD@Ei%-f=+uvnvqbx5lcjg3M#*H6S)fm#R$0rs(oNEts4TGnvpUXO@geCyN`$o3_
+

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Reference">
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/cardbg"
+        android:layout_marginTop="55dp"
+        app:cardElevation="10dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/titleautomobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:contentDescription="Automobile"
+                android:fontFamily="@font/robotobold"
+                android:text="Automobile"
+                android:textColor="@color/navheadcol"
+                android:textSize="14dp" />
+
+            <ImageView
+                android:id="@+id/automobilelogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"
+                app:srcCompat="@drawable/car" />
+
+            <TextView
+                android:id="@+id/automobileref"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginRight="50dp"
+                android:fontFamily="@font/robotoregular"
+                android:justificationMode="inter_word"
+                android:lineHeight="20dp"
+                android:padding="10dp"
+                android:text="Automotive Engineering, Along With Aerospace Engineering And Naval Architecture, Is A Branch Of Vehicle Engineering, Incorporating Elements Of "
+                android:textColor="@color/cardtxt"
+                android:textSize="14dp" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="570dp"
+        app:cardElevation="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardBackgroundColor="@color/cardbg"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"
+            >
+
+            <TextView
+                android:id="@+id/titlemarketing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/robotobold"
+                android:text="Marketing"
+                android:textColor="@color/navheadcol"
+                android:textSize="14dp" />
+
+            <ImageView
+                android:id="@+id/marketinglogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"
+                app:srcCompat="@drawable/marketing" />
+
+            <TextView
+                android:id="@+id/marketinghref"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:textSize="14dp"
+                android:fontFamily="@font/robotoregular"
+                android:textColor="@color/cardtxt"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:lineHeight="20dp"
+                android:padding="10dp"
+                android:justificationMode="inter_word"
+                android:text="Automotive Engineering, Along With Aerospace Engineering And Naval Architecture, Is A Branch Of Vehicle Engineering, Incorporating Elements Of " />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="310dp"
+        app:cardElevation="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardBackgroundColor="@color/cardbg"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"
+            >
+
+            <TextView
+                android:id="@+id/titletechnology"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/robotobold"
+                android:text="Technology"
+                android:textColor="@color/navheadcol"
+                android:textSize="14dp" />
+
+            <ImageView
+                android:id="@+id/Techlogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"
+                app:srcCompat="@drawable/code" />
+
+            <TextView
+                android:id="@+id/techref"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:textSize="14dp"
+                android:fontFamily="@font/robotoregular"
+                android:textColor="@color/cardtxt"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:lineHeight="20dp"
+                android:padding="10dp"
+                android:justificationMode="inter_word"
+                android:text="Automotive Engineering, Along With Aerospace Engineering And Naval Architecture, Is A Branch Of Vehicle Engineering, Incorporating Elements Of " />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

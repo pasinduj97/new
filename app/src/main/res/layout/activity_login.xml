@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/splashlogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp"
+        />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="320dp"
+        android:ems="10"
+        android:padding="15dp"
+        android:inputType="textPersonName"
+        android:hint="@string/prompt_username"
+        android:fontFamily="@font/robotoregular"
+        android:background="@drawable/custom_input"
+        android:textSize="16dp" />
+
+
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:padding="15dp"
+        android:background="@drawable/custom_input"
+        android:layout_marginRight="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="400dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:fontFamily="@font/robotoregular"
+        android:hint="@string/prompt_password"
+        android:textSize="16dp"/>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/registerBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="470dp"
+        android:layout_marginRight="50dp"
+        app:cardBackgroundColor="@color/navheadcol"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="25dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/breeserifregular"
+                android:text="@string/title_activity_login"
+                android:textColor="@color/categorytextcolor"
+                android:textSize="25dp"
+                android:padding="10dp"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/textlogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="530dp"
+        android:layout_marginRight="50dp"
+        app:cardElevation="0dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+                android:id="@+id/textloginstatement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:fontFamily="@font/robotoregular"
+                android:padding="10dp"
+                android:text="Don't Have An Account?"
+                android:textColor="@color/navheadcol"
+                android:textSize="14dp"
+
+
+                />
+
+            <TextView
+                android:id="@+id/textregisterhref"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dp"
+                android:fontFamily="@font/breeserifregular"
+                android:padding="10dp"
+                android:text="@string/title_activity_register"
+                android:textColor="@color/navheadcol"
+                android:textSize="14dp"
+
+                />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

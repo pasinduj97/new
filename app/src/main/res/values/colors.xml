@@ -5,5 +5,15 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="usernamecolor">#4CB3AA</color>
     <color name="categorytextcolor">#FFFFFF</color>
+    <color name="settoolbartxtviewcolor">#707070</color>
+    <color name="popupbuttontext">#F9F9F9</color>
+    <color name="navheadcol">#4CB3AA</color>
+    <color name="setsbackgroundtint">#F1F9FF</color>
+    <color name="userprobackground">#F1FFF8</color>
+    <color name="mancattitle">#474747</color>
+
+    <color name="cardbg">#F1F9FF</color>
+    <color name="cardtxt">#474747</color>
+    <color  name="red">#842C68</color>
 
 </resources>
