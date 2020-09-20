@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
 
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="6dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
 
 
@@ -70,19 +72,18 @@
 
 
     </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+
+
+    <RelativeLayout
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+
         android:background="@color/userprobackground"
         android:elevation="100dp"
+        android:layout_marginTop="10dp"
 
-        ><androidx.constraintlayout.widget.ConstraintLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="507dp"
-        android:background="@color/userprobackground"
-        android:elevation="100dp">
+        >
 
         <TextView
             android:id="@+id/textView3"
@@ -92,279 +93,49 @@
             android:text="@string/quizestopic"
             android:textColor="@color/usernamecolor"
             android:textSize="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.077"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.032" />
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="5dp"
 
-        <ImageView
-            android:id="@+id/science"
-            android:layout_width="182dp"
-            android:layout_height="126dp"
-            android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.069"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.125"
-            app:srcCompat="@drawable/science" />
-
-        <ImageView
-            android:id="@+id/imageView14"
-            android:layout_width="182dp"
-            android:layout_height="126dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.93"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.456"
-            app:srcCompat="@drawable/sports" />
-
-        <ImageView
-            android:id="@+id/imageView16"
-            android:layout_width="182dp"
-            android:layout_height="126dp"
-
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.93"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.763"
-            app:srcCompat="@drawable/law" />
-
-        <ImageView
-            android:id="@+id/imageView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="148dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView15"
-            app:layout_constraintTop_toTopOf="@+id/imageView15"
-            app:srcCompat="@drawable/delicon" />
-
-        <ImageView
-            android:id="@+id/imageView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="148dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView16"
-            app:layout_constraintTop_toTopOf="@+id/imageView16"
-            app:srcCompat="@drawable/delicon" />
-
-
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="148dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/science"
-            app:layout_constraintTop_toTopOf="@+id/science"
-            app:srcCompat="@drawable/delicon" />
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="148dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView9"
-            app:layout_constraintTop_toTopOf="@+id/imageView9"
-            app:srcCompat="@drawable/delicon" />
-
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="182dp"
-            android:layout_height="126dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.93"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.125"
-            app:srcCompat="@drawable/maths" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="64dp"
-            android:fontFamily="@font/robotoregular"
-            android:text="@string/category1"
-            android:textColor="@color/categorytextcolor"
-            android:textSize="14dp"
-
-            app:layout_constraintStart_toStartOf="@+id/science"
-            app:layout_constraintTop_toTopOf="@+id/science" />
-
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="148dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView14"
-            app:layout_constraintTop_toTopOf="@+id/imageView14"
-            app:srcCompat="@drawable/delicon" />
-
-
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="60dp"
-            android:fontFamily="@font/robotoregular"
-            android:text="@string/category4"
-            android:textColor="@color/categorytextcolor"
-            android:textSize="14dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView14"
-            app:layout_constraintTop_toTopOf="@+id/imageView14" />
-
-        <ImageView
-            android:id="@+id/imageView13"
-            android:layout_width="182dp"
-            android:layout_height="126dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.069"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.456"
-            app:srcCompat="@drawable/technology" />
-
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="148dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView13"
-            app:layout_constraintTop_toTopOf="@+id/imageView13"
-            app:srcCompat="@drawable/delicon" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="68dp"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/robotoregular"
-            android:text="@string/category2"
-            android:textColor="@color/categorytextcolor"
-            android:textSize="14dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView9"
-            app:layout_constraintTop_toBottomOf="@+id/imageView11" />
-
-        <ImageView
-            android:id="@+id/imageView15"
-            android:layout_width="182dp"
-            android:layout_height="126dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.069"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.763"
-            app:srcCompat="@drawable/politics" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="46dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="68dp"
-            android:layout_marginTop="60dp"
-            android:fontFamily="@font/robotoregular"
-            android:text="@string/category6"
-            android:textAlignment="center"
-            android:textColor="@color/categorytextcolor"
-            android:textSize="14dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView16"
-            app:layout_constraintTop_toTopOf="@+id/imageView16" />
-
-        <ImageView
-            android:id="@+id/imageView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="28dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView9"
-            app:layout_constraintTop_toTopOf="@+id/imageView9"
-            app:srcCompat="@drawable/feathertriangle" />
-
-        <ImageView
-            android:id="@+id/plusbutton"
-            android:layout_width="83dp"
-            android:layout_height="83dp"
-            android:layout_marginStart="220dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="2dp"
-            android:elevation="30dp"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.867"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView16"
-            app:srcCompat="@drawable/plusbutton"
             />
 
 
-        <ImageView
-            android:id="@+id/imageView18"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:elevation="40dp"
-            app:layout_constraintStart_toStartOf="@+id/plusbutton"
-            app:layout_constraintTop_toTopOf="@+id/plusbutton"
-            app:srcCompat="@drawable/plus" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="60dp"
-            android:fontFamily="@font/robotoregular"
-            android:text="@string/category3"
-            android:textColor="@color/categorytextcolor"
-            android:textSize="14dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView13"
-            app:layout_constraintTop_toTopOf="@+id/imageView13" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="67dp"
-            android:layout_marginTop="60dp"
-            android:fontFamily="@font/robotoregular"
-            android:text="@string/category5"
-            android:textColor="@color/categorytextcolor"
-            android:textSize="14dp"
-            android:textAlignment="center"
-            app:layout_constraintStart_toStartOf="@+id/imageView15"
-            app:layout_constraintTop_toTopOf="@+id/imageView15" />
+    <GridView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
 
 
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:padding="0dp"
+        android:verticalSpacing="2dp"
+        android:horizontalSpacing="2dp"
+        android:scrollingCache="true"
+        android:smoothScrollbar="true"
+        android:clipChildren="true"
+        android:alwaysDrawnWithCache="true"
+
+        android:stretchMode="columnWidth"
+        android:gravity="center_horizontal"
 
 
-    </androidx.cardview.widget.CardView>
+        android:id="@+id/cat"
+
+
+        android:columnWidth="100dp"
+        android:numColumns="2"
+
+        >
+
+
+
+
+
+    </GridView>
+
+    </RelativeLayout>>
+
+
 
 
 </LinearLayout>

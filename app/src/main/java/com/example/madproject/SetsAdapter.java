@@ -1,6 +1,7 @@
 package com.example.madproject;
 
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,9 +34,11 @@ public class SetsAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, final ViewGroup parent) {
 
         View view;
+
+
 
         if (convertView == null){
 
@@ -51,6 +54,13 @@ public class SetsAdapter extends BaseAdapter{
         ((TextView) view.findViewById(R.id.setNo_tv)).setText(String.valueOf(position+1));
 
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(parent.getContext(),QuestionActivity.class);
+                parent.getContext().startActivity(intent);
+            }
+        });
 
 
 
