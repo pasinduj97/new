@@ -6,7 +6,7 @@
 **1. Clone the repository**
 
 ```
-git clone https://github.com/banujan6/Sliit-mad-project.git
+git clone https://github.com/pasinduj97/Sliit-Madness.git
 ```
 
 **2. Do your works**
