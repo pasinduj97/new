@@ -11,6 +11,7 @@
     <color name="setsbackgroundtint">#F1F9FF</color>
     <color name="userprobackground">#F1FFF8</color>
     <color name="mancattitle">#474747</color>
+    <color name="trans">#00000000</color>
 
     <color name="cardbg">#F1F9FF</color>
     <color name="cardtxt">#474747</color>

@@ -72,6 +72,7 @@ public class CatsAdapter extends BaseAdapter {
 
                 Intent intent = new Intent(parent.getContext(),SetsActivity.class);
                 intent.putExtra("category",catList.get(position));
+                intent.putExtra("categoryId",position + 1);
                 parent.getContext().startActivity(intent);
 
             }

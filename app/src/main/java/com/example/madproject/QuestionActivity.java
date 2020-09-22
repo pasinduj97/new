@@ -1,10 +1,12 @@
 package com.example.madproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.appcompat.widget.Toolbar;
 
 import android.animation.Animator;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -14,9 +16,21 @@ import android.os.Handler;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import org.w3c.dom.Document;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.madproject.SetsActivity.categoryId;
 
 
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
@@ -29,6 +43,9 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     private int quesnum;
     private CountDownTimer countDownTimer;
     private int score;
+    private FirebaseFirestore firestore;
+    private int setNo;
+    private Dialog loader;
 
 
     @Override
@@ -50,6 +67,15 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         toolbar = findViewById(R.id.question_toolbar);
         setSupportActionBar(toolbar);
 
+        loader = new Dialog(QuestionActivity.this);
+        loader.setContentView(R.layout.progress_bar);
+        loader.setCancelable(false);
+        loader.show();
+
+
+        setNo = getIntent().getIntExtra("setNo",1);
+        firestore = FirebaseFirestore.getInstance();
+
 
 
         option1.setOnClickListener(this);
@@ -68,12 +94,38 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
         questionList = new ArrayList<>();
 
-        questionList.add(new Question("question1","A","B","C","D",2));
-        questionList.add(new Question("question2","A","B","C","D",3));
-        questionList.add(new Question("question3","A","B","C","D",1));
-        questionList.add(new Question("question4","A","B","C","D",4));
+        firestore.collection("QUIZ").document("CAT"+String.valueOf(categoryId)).collection("SET"+String.valueOf(setNo))
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
-        setQuestion();
+                if(task.isSuccessful()){
+                    QuerySnapshot questions = task.getResult();
+
+                    for (QueryDocumentSnapshot doc : questions){
+
+                        questionList.add( new Question(doc.getString("QUESTION"),doc.getString("A"),
+                                doc.getString("B"),
+                                doc.getString("C"),
+                                doc.getString("D"),
+                                Integer.valueOf(doc.getString("ANSWER"))
+                        ));
+
+                    }
+                    setQuestion();
+
+                }
+                else {
+
+                    Toast.makeText(QuestionActivity.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+
+                }
+
+                loader.cancel();
+            }
+        });
+
+
 
     }
 
