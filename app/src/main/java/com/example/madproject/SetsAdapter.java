@@ -2,6 +2,7 @@ package com.example.madproject;
 
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ public class SetsAdapter extends BaseAdapter{
 
     public SetsAdapter(int numOfSets) {
         this.numOfSets = numOfSets;
+        Log.i("pos","setad");
     }
 
 
@@ -58,7 +60,7 @@ public class SetsAdapter extends BaseAdapter{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(parent.getContext(),QuestionActivity.class);
-                intent.putExtra("setNo",position+1);
+                intent.putExtra("setNo",position);
                 parent.getContext().startActivity(intent);
 
             }

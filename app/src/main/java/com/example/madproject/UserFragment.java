@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.madproject.R.layout.catpopup;
-
+import static com.example.madproject.UserDashboard.catList;
 
 
 public class UserFragment extends Fragment {
@@ -77,8 +77,7 @@ public class UserFragment extends Fragment {
         catimgList.add(R.drawable.sports);
 
 
-       List<String> catList = new ArrayList<String>();
-       catList = ((UserDashboard) getActivity()).catList;
+
 
 
 

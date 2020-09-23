@@ -7,23 +7,33 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.example.madproject.UserDashboard.catList;
+import static com.example.madproject.UserDashboard.selected_cat_index;
 
 public class SetsActivity extends AppCompatActivity {
 
 
     private Toolbar myToolbar;
     private GridView sets_grid;
-    public  static int categoryId;
+
     private FirebaseFirestore firestore;
     private Dialog loader;
+    public static List<String> setsIDs = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +49,8 @@ public class SetsActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        String title = getIntent().getStringExtra("category");
-        categoryId = getIntent().getIntExtra("categoryId",1);
+        String title = catList.get(selected_cat_index).getName();
+
 
         getSupportActionBar().setTitle(title);
 
@@ -61,17 +71,60 @@ public class SetsActivity extends AppCompatActivity {
     }
 
     private void loadData(){
+//
+//        firestore = FirebaseFirestore.getInstance();
+
+        setsIDs.clear();
+
+        //firestore.collection("QUIZ").document(id).set();
+
+//        String y = firestore.collection("QUIZ").document(catList.get(selected_cat_index).getIds()).getId();
+//
+//        Log.i("fuc",y);
+
+       // String x = y;
+
+        //Log.i("ubitch",x);
+
+//        Log.i("suck",String.valueOf(firestore.document("QUIZ/"+y).get()));
+//
+//        Task<DocumentSnapshot> db = firestore.document("QUIZ/".concat(y)).get();
+//        if(db.isSuccessful()) {
+//
+//            Log.i("mahadi","in");
+//        }
+//        else{
+//            Log.i("mahadi","out");
+//        }
+
+//        String obj = String.valueOf(firestore.document("QUIZ/"+y).get());
+//
+//        String.toObject();
 
 
-        firestore.collection("QUIZ").document("CAT"+String.valueOf(categoryId)).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        CatModel cat = catList.get(selected_cat_index);
+
+        firestore.collection("QUIZ").document(cat.getIds()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
 
+
                 long noOfsets = (long)documentSnapshot.get("SETS");
 
-                SetsAdapter setsAdapter = new SetsAdapter((int)noOfsets);
+                for (int i = 1; i <= noOfsets; i++){
+
+                    setsIDs.add(documentSnapshot.getString("SET"+String.valueOf(i)+"_ID"));
+                }
+
+                Log.i("pos",String.valueOf(setsIDs.size()));
+
+                SetsAdapter setsAdapter = new SetsAdapter(setsIDs.size());
                 sets_grid.setAdapter(setsAdapter);
                 loader.cancel();
+
+
+                //Toast.makeText(SetsActivity.this,selected_cat_index,Toast.LENGTH_SHORT).show();
+
 
 
             }
@@ -79,6 +132,7 @@ public class SetsActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(SetsActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                Log.i("pos",e.getMessage());
             }
         });
     }

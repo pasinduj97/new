@@ -10,6 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -28,8 +29,9 @@ import java.util.List;
 public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout drawer;
-    public List<String> catList = new ArrayList<>();
+    public static List<CatModel> catList = new ArrayList<>();
     private FirebaseFirestore firestore;
+    public static int selected_cat_index = 0;
     private Dialog loader;
 
     @Override
@@ -72,16 +74,20 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     private void loadData(){
 
         catList.clear();
+        Log.i("category",String.valueOf(firestore.collection("QUIZ").document("Categories").get()));
         firestore.collection("QUIZ").document("Categories").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                Log.i("pos","hey");
 
                 long count = (long)documentSnapshot.get("COUNT");
 
                 for(int i = 1 ;i<=count;i++){
 
-                    String cat = documentSnapshot.getString("CAT" + String.valueOf(i));
-                    catList.add(cat);
+                    String catName = documentSnapshot.getString("CAT" + String.valueOf(i)+ "_NAME");
+                    String catId = documentSnapshot.getString("CAT" + String.valueOf(i)+ "_ID");
+                    catList.add(new CatModel(catId,catName));
 //                    Toast.makeText(UserDashboard.this, cat,Toast.LENGTH_SHORT).show();
 
                 }
@@ -90,6 +96,8 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                         new UserFragment()).commit();
 
                 loader.cancel();
+
+
 
 
             }
@@ -129,10 +137,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         }
     }
 
-    public List<String> getcatList(){
 
-        return catList;
-    }
 
 
 }

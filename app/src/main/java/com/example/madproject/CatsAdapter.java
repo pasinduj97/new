@@ -3,6 +3,7 @@ package com.example.madproject;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,16 +17,18 @@ import androidx.appcompat.app.AlertDialog;
 
 import java.util.List;
 
+import static com.example.madproject.UserDashboard.selected_cat_index;
+
 public class CatsAdapter extends BaseAdapter {
 
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
     private Context con;
 
-    private List<String> catList;
+    private List<CatModel> catList;
     private List<Integer> catimgList;
 
-    public CatsAdapter(List<String> catList, List<Integer> catimgList) {
+    public CatsAdapter(List<CatModel> catList, List<Integer> catimgList) {
         this.catList = catList;
         this.catimgList = catimgList;
     }
@@ -70,10 +73,14 @@ public class CatsAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
 
+                UserDashboard.selected_cat_index = position;
+
                 Intent intent = new Intent(parent.getContext(),SetsActivity.class);
-                intent.putExtra("category",catList.get(position));
-                intent.putExtra("categoryId",position + 1);
+
                 parent.getContext().startActivity(intent);
+
+
+
 
             }
         });
@@ -89,7 +96,7 @@ public class CatsAdapter extends BaseAdapter {
             }
         });
 
-        ((TextView) view.findViewById(R.id.categoryad)).setText(catList.get(position));
+        ((TextView) view.findViewById(R.id.categoryad)).setText(catList.get(position).getName());
         ((ImageView) view.findViewById(R.id.catimg)).setImageResource(catimgList.get(position));
 
 

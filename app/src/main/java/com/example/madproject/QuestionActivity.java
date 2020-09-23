@@ -13,12 +13,16 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.util.ArrayMap;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,11 +30,13 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import org.w3c.dom.Document;
+import static com.example.madproject.UserDashboard.catList;
+import static com.example.madproject.UserDashboard.selected_cat_index;
+import static com.example.madproject.SetsActivity.setsIDs;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.example.madproject.SetsActivity.categoryId;
+import java.util.Map;
 
 
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
@@ -66,6 +72,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
         toolbar = findViewById(R.id.question_toolbar);
         setSupportActionBar(toolbar);
+        questionList = new ArrayList<>();
 
         loader = new Dialog(QuestionActivity.this);
         loader.setContentView(R.layout.progress_bar);
@@ -92,36 +99,56 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
     private void getQuestionList(){
 
-        questionList = new ArrayList<>();
+        questionList.clear();
 
-        firestore.collection("QUIZ").document("CAT"+String.valueOf(categoryId)).collection("SET"+String.valueOf(setNo))
-                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        Log.i("q",String.valueOf(firestore.collection("QUIZ").document(
+                "RCH7ax1jnWXfqme7jqED").collection(setsIDs.get(setNo))
+                .get()));
+
+        firestore.collection("QUIZ").document(catList.get(selected_cat_index).getIds()).collection(setsIDs.get(setNo))
+                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
-                if(task.isSuccessful()){
-                    QuerySnapshot questions = task.getResult();
+                Map<String,QueryDocumentSnapshot> docList = new ArrayMap<>();
 
-                    for (QueryDocumentSnapshot doc : questions){
+                for(QueryDocumentSnapshot doc : queryDocumentSnapshots){
 
-                        questionList.add( new Question(doc.getString("QUESTION"),doc.getString("A"),
-                                doc.getString("B"),
-                                doc.getString("C"),
-                                doc.getString("D"),
-                                Integer.valueOf(doc.getString("ANSWER"))
-                        ));
-
-                    }
-                    setQuestion();
-
-                }
-                else {
-
-                    Toast.makeText(QuestionActivity.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                    docList.put(doc.getId(),doc);
 
                 }
 
+                QueryDocumentSnapshot quesListDoc = docList.get("QUESTION_LIST");
+
+                String count = quesListDoc.getString("COUNT");
+
+                for (int i = 0 ; i<Integer.valueOf(count); i++){
+
+                    String quesID = quesListDoc.getString("Q"+String.valueOf(i+1)+"_ID");
+                    QueryDocumentSnapshot quesDoc = docList.get(quesID);
+
+                    questionList.add(new Question(
+
+                                quesDoc.getString("QUESTION"),
+                                quesDoc.getString("A"),
+                                quesDoc.getString("B"),
+                                quesDoc.getString("C"),
+                                quesDoc.getString("D"),
+                                Integer.valueOf(quesDoc.getString("ANSWER"))
+                    ));
+
+
+
+                }
+
+                setQuestion();
                 loader.cancel();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
             }
         });
 
