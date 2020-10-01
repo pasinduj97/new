@@ -12,9 +12,11 @@
         <activity android:name=".adminHome">
 
         </activity>
+
         <activity android:name=".ManageSetsAdmin">
 
         </activity>
+
         <activity android:name=".SelectUser" />
         <activity android:name=".SucessActivity" />
         <activity android:name=".QuestionActivity" />

@@ -72,6 +72,8 @@ public class UserFragment extends Fragment {
         catimgList.add(R.drawable.law);
         catimgList.add(R.drawable.sports);
         catimgList.add(R.drawable.sports);
+        catimgList.add(R.drawable.sports);
+        catimgList.add(R.drawable.sports);
 
 
 

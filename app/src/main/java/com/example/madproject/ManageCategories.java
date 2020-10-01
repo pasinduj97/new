@@ -173,6 +173,7 @@ public class ManageCategories extends AppCompatActivity {
         catData.put("SETS",0);
         catData.put("COUNTER","1");
 
+
         final String doc_id = firestore.collection("quiz").document().getId();
 
         firestore.collection("quiz").document(doc_id)

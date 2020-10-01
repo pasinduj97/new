@@ -97,7 +97,9 @@ public class ManageCategoriesAdapter extends RecyclerView.Adapter<ManageCategori
                 public void onClick(View v) {
 
                     ManageCategories.selected_cat_index = position;
+
                     Intent intent = new Intent(itemView.getContext(),ManageSetsAdmin.class);
+
                     itemView.getContext().startActivity(intent);
                 }
             });

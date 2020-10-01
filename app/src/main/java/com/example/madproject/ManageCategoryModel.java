@@ -38,6 +38,7 @@ public class ManageCategoryModel {
         this.noOfSets = noOfSets;
     }
 
+
     public String getSetCounter() {
         return setCounter;
     }
@@ -45,5 +46,9 @@ public class ManageCategoryModel {
     public void setSetCounter(String setCounter) {
         this.setCounter = setCounter;
     }
+
+
+
+
 
 }

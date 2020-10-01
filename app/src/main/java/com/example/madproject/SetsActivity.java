@@ -72,7 +72,9 @@ public class SetsActivity extends AppCompatActivity {
 
     private void loadData() {
 
+
         setsIDs.clear();
+
 
         firestore.collection("quiz").document(catList.get(selected_cat_index).getIds()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
