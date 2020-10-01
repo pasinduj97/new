@@ -110,14 +110,14 @@ public class AdminFragment extends Fragment {
         dialog.show();
 
 
-        //Button xpop = dispopup.findViewById(R.id.button2);
+        Button xpop = dispopup.findViewById(R.id.delautomob);
 
-        /*xpop.setOnClickListener(new View.OnClickListener() {
+        xpop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
             }
-        });*/
+        });
 
     }
 

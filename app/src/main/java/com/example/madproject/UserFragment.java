@@ -47,9 +47,6 @@ public class UserFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.activity_user_profile,container,false);
-
-
-
     }
 
     @Override
@@ -73,6 +70,8 @@ public class UserFragment extends Fragment {
         catimgList.add(R.drawable.science);
         catimgList.add(R.drawable.politics);
         catimgList.add(R.drawable.law);
+        catimgList.add(R.drawable.sports);
+        catimgList.add(R.drawable.sports);
         catimgList.add(R.drawable.sports);
         catimgList.add(R.drawable.sports);
 

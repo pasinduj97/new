@@ -6,58 +6,62 @@
     android:layout_height="match_parent"
     tools:context=".Login">
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/splashlogo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="180dp"
-        />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="153dp"
+        android:layout_marginTop="129dp"
+        android:layout_marginEnd="153dp"
+        app:srcCompat="@drawable/splashlogo" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="320dp"
-        android:ems="10"
-        android:padding="15dp"
-        android:inputType="textPersonName"
-        android:hint="@string/prompt_username"
-        android:fontFamily="@font/robotoregular"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginRight="50dp"
         android:background="@drawable/custom_input"
+        android:ems="10"
+        android:fontFamily="@font/robotoregular"
+        android:hint="@string/prompt_email"
+        android:inputType="textPersonName"
+        android:padding="15dp"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/custom_input"
+        android:ems="10"
+        android:fontFamily="@font/robotoregular"
+        android:hint="@string/prompt_password"
+        android:inputType="textPassword"
+        android:padding="15dp"
         android:textSize="16dp" />
 
 
 
-    <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:padding="15dp"
-        android:background="@drawable/custom_input"
-        android:layout_marginRight="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="400dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:fontFamily="@font/robotoregular"
-        android:hint="@string/prompt_password"
-        android:textSize="16dp"/>
-
-
-
     <androidx.cardview.widget.CardView
-        android:id="@+id/registerBtn"
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="470dp"
+        android:layout_marginTop="490dp"
         android:layout_marginRight="50dp"
         app:cardBackgroundColor="@color/navheadcol"
         app:cardElevation="10dp"
@@ -68,63 +72,15 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textRegister"
+                android:id="@+id/logintext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:fontFamily="@font/breeserifregular"
+                android:padding="10dp"
                 android:text="@string/title_activity_login"
                 android:textColor="@color/categorytextcolor"
-                android:textSize="25dp"
-                android:padding="10dp"
-                android:layout_centerHorizontal="true"
-                />
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/textlogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="530dp"
-        android:layout_marginRight="50dp"
-        app:cardElevation="0dp"
-        >
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-
-            <TextView
-                android:id="@+id/textloginstatement"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:fontFamily="@font/robotoregular"
-                android:padding="10dp"
-                android:text="Don't Have An Account?"
-                android:textColor="@color/navheadcol"
-                android:textSize="14dp"
-
-
-                />
-
-            <TextView
-                android:id="@+id/textregisterhref"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="40dp"
-                android:fontFamily="@font/breeserifregular"
-                android:padding="10dp"
-                android:text="@string/title_activity_register"
-                android:textColor="@color/navheadcol"
-                android:textSize="14dp"
-
-                />
+                android:textSize="25dp" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

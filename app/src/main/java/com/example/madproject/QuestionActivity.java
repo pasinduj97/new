@@ -105,7 +105,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                 "RCH7ax1jnWXfqme7jqED").collection(setsIDs.get(setNo))
                 .get()));
 
-        firestore.collection("QUIZ").document(catList.get(selected_cat_index).getIds()).collection(setsIDs.get(setNo))
+        firestore.collection("quiz").document(catList.get(selected_cat_index).getIds()).collection(setsIDs.get(setNo))
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -118,7 +118,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
                 }
 
-                QueryDocumentSnapshot quesListDoc = docList.get("QUESTION_LIST");
+                QueryDocumentSnapshot quesListDoc = docList.get("QUESTIONS_LIST");
 
                 String count = quesListDoc.getString("COUNT");
 
