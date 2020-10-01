@@ -5,21 +5,16 @@
     android:layout_width="wrap_content"
     android:layout_height="311dp"
     android:orientation="vertical"
-
     android:background="@color/setsbackgroundtint"
     android:layout_gravity="center"
     >
 
-
     <androidx.cardview.widget.CardView
         android:layout_height="311dp"
         android:layout_width="340dp"
-
+        android:background="@color/cardbg"
         app:cardElevation="30dp"
         android:layout_gravity="center"
-
-
-
         >
 
 
@@ -27,28 +22,27 @@
             android:id="@+id/textView4"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-
             android:layout_marginTop="60dp"
             android:layout_marginStart="67dp"
-
             android:fontFamily="@font/robotobold"
             android:text="@string/addcatpopup"
             android:textAlignment="center"
             android:textColor="@color/usernamecolor"
-            android:textSize="23dp" />
+            android:textSize="28dp" />
 
         <EditText
-            android:id="@+id/popupcat"
-            android:layout_width="200dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="70dp"
+            android:id="@+id/add_cat_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:hint="Category Name Here"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="120dp"
-
-
             android:background="@drawable/round_corner_popup"></EditText>
 
         <Button
-        android:id="@+id/button"
+        android:id="@+id/ac_add_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
@@ -61,7 +55,7 @@
         ></Button>
 
     <ImageButton
-        android:id="@+id/xcatpopup"
+        android:id="@+id/ac_close_button"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginStart="300dp"

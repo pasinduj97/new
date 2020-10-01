@@ -118,7 +118,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
                 }
 
-                QueryDocumentSnapshot quesListDoc = docList.get("QUESTION_LIST");
+                QueryDocumentSnapshot quesListDoc = docList.get("QUESTIONS_LIST");
 
                 String count = quesListDoc.getString("COUNT");
 

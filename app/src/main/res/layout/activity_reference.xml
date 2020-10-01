@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="60dp"
-                app:srcCompat="@drawable/marketing" />
+              />
 
             <TextView
                 android:id="@+id/marketinghref"
@@ -151,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="60dp"
-                app:srcCompat="@drawable/code" />
+                 />
 
             <TextView
                 android:id="@+id/techref"

@@ -12,12 +12,17 @@ import android.view.MenuItem;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,14 +48,12 @@ public class SetsActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
 
-
         Toolbar toolbar = findViewById(R.id.set_toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String title = catList.get(selected_cat_index).getName();
-
 
         getSupportActionBar().setTitle(title);
 
@@ -65,53 +68,19 @@ public class SetsActivity extends AppCompatActivity {
         loadData();
 
 
-
-
-
     }
 
-    private void loadData(){
-//
-//        firestore = FirebaseFirestore.getInstance();
+    private void loadData() {
 
         setsIDs.clear();
 
-        //firestore.collection("QUIZ").document(id).set();
-
-//        String y = firestore.collection("QUIZ").document(catList.get(selected_cat_index).getIds()).getId();
-//
-//        Log.i("fuc",y);
-
-       // String x = y;
-
-        //Log.i("ubitch",x);
-
-//        Log.i("suck",String.valueOf(firestore.document("QUIZ/"+y).get()));
-//
-//        Task<DocumentSnapshot> db = firestore.document("QUIZ/".concat(y)).get();
-//        if(db.isSuccessful()) {
-//
-//            Log.i("mahadi","in");
-//        }
-//        else{
-//            Log.i("mahadi","out");
-//        }
-
-//        String obj = String.valueOf(firestore.document("QUIZ/"+y).get());
-//
-//        String.toObject();
-
-
-        CatModel cat = catList.get(selected_cat_index);
-
-        firestore.collection("QUIZ").document(cat.getIds()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        firestore.collection("quiz").document(catList.get(selected_cat_index).getIds()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-
                 long noOfsets = (long)documentSnapshot.get("SETS");
 
-                for (int i = 1; i <= noOfsets; i++){
+                for (int i = 1; i <= (int)noOfsets; i++){
 
                     setsIDs.add(documentSnapshot.getString("SET"+String.valueOf(i)+"_ID"));
                 }
@@ -135,7 +104,61 @@ public class SetsActivity extends AppCompatActivity {
                 Log.i("pos",e.getMessage());
             }
         });
+
     }
+
+
+
+//        firestore.collection("QUIZ")
+//                .whereEqualTo("dummy", "yes")
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        if (task.isSuccessful()) {
+//                            for (QueryDocumentSnapshot document : task.getResult()) {
+//                                Log.i("sucess", document.getId() + " => " + document.getData());
+//                            }
+//                        } else {
+//                            Log.i("Error getting documents: ", String.valueOf(task.getException()));
+//                        }
+//                    }
+//                });
+
+
+//        firestore.collection("QUIZ").document(cat.getIds())
+//
+//                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//            @Override
+//            public void onSuccess(DocumentSnapshot documentSnapshot) {
+//
+//                long noOfsets = (long)documentSnapshot.get("SETS");
+//
+//                for (int i = 1; i <= noOfsets; i++){
+//
+//                    setsIDs.add(documentSnapshot.getString("SET"+String.valueOf(i)+"_ID"));
+//                }
+//
+//                Log.i("pos",String.valueOf(setsIDs.size()));
+//
+//                SetsAdapter setsAdapter = new SetsAdapter(setsIDs.size());
+//                sets_grid.setAdapter(setsAdapter);
+//                loader.cancel();
+//
+//
+//                //Toast.makeText(SetsActivity.this,selected_cat_index,Toast.LENGTH_SHORT).show();
+//
+//
+//
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                Toast.makeText(SetsActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+//                Log.i("pos",e.getMessage());
+//            }
+//        });
+//    }
 
 
     @Override
@@ -148,7 +171,7 @@ public class SetsActivity extends AppCompatActivity {
         }
         return (super.onOptionsItemSelected(menuItem));
     }
-
-
-
 }
+
+
+

@@ -74,8 +74,8 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     private void loadData(){
 
         catList.clear();
-        Log.i("category",String.valueOf(firestore.collection("QUIZ").document("Categories").get()));
-        firestore.collection("QUIZ").document("Categories").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        Log.i("category",String.valueOf(firestore.collection("quiz").document("Categories").get()));
+        firestore.collection("quiz").document("Categories").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
 

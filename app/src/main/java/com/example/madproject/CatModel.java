@@ -5,6 +5,9 @@ public class CatModel {
     private String id;
     private String name;
 
+    public CatModel() {
+    }
+
     public CatModel(String id, String name) {
         this.id = id;
         this.name = name;
