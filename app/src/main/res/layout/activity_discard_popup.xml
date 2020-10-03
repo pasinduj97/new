@@ -42,7 +42,7 @@
                     android:orientation="horizontal" >
 
                     <Button
-                        android:id="@+id/button"
+                        android:id="@+id/no"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/custom_popup_btn"
@@ -51,7 +51,7 @@
                         android:layout_weight=".50" />
 
                     <Button
-                        android:id="@+id/button2222"
+                        android:id="@+id/yes"
                         android:layout_width="0dp"
                         android:layout_alignParentBottom="true"
                         android:textColor="@color/navheadcol"

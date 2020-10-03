@@ -1,6 +1,7 @@
 package com.example.madproject;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,9 +10,15 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,33 +26,88 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class UserDashboard extends AppCompatActivity{
 
     private DrawerLayout drawer;
     public static List<CatModel> catList = new ArrayList<>();
+    public static List<Integer> catimgList = new ArrayList<>();
     private FirebaseFirestore firestore;
+    private FirebaseFirestore fire;
     public static int selected_cat_index = 0;
     private Dialog loader;
+    private TextView logout,fullname;
+    private FirebaseAuth fAuth;
+    private String userId;
+    private GridView category;
+    private ImageView addNewCat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
 
+
+        fAuth = FirebaseAuth.getInstance();
+
+        userId = fAuth.getCurrentUser().getUid();
+
         loader = new Dialog(UserDashboard.this);
         loader.setContentView(R.layout.progress_bar);
         loader.setCancelable(false);
         loader.show();
 
+
+
+        category = findViewById(R.id.cat);
+
+
+        catimgList.add(R.drawable.politics);
+        catimgList.add(R.drawable.law);
+        catimgList.add(R.drawable.sports);
+        catimgList.add(R.drawable.sports);
+        catimgList.add(R.drawable.sports);
+        catimgList.add(R.drawable.sports);
+
+
+
+
+        logout = findViewById(R.id.logt);
+        addNewCat = findViewById(R.id.addNewCat);
+
+
         firestore = FirebaseFirestore.getInstance();
+        fire = FirebaseFirestore.getInstance();
+
         loadData();
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logout(view);
+            }
+        });
+
+        addNewCat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserDashboard.this,UserAddCat.class);
+                startActivity(intent);
+            }
+        });
+
+
+        fullname = findViewById(R.id.fullname);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -55,19 +117,28 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         toolbar.setNavigationIcon(R.drawable.ic_menu);
         toolbar.setOverflowIcon(ContextCompat.getDrawable(this, R.drawable.ic_menu));
 
-        drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+
+        //fullname.setText("lol");
+
+        DocumentReference documentReference = fire.collection("users").document(userId);
+
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if(documentSnapshot.exists()){
+
+                    fullname.setText(documentSnapshot.getString("fName"));
+
+                    Log.i("username",documentSnapshot.getString("fName"));
+
+                }else {
+                    Log.d("tag", "onEvent: Document do not exists");
+                }
+            }
+        });
 
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,toolbar,
-                R.string.navigation_drawer_open,R.string.navigation_drawer_close);
 
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-       getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new UserFragment()).commit();
     }
 
 
@@ -75,57 +146,48 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
         catList.clear();
 
-        firestore.collection("quiz").document("Categories").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        firestore.collection("users").document(userId).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
 
-                Log.i("pos","hey");
+                if(documentSnapshot.exists()){
 
-                long count = (long)documentSnapshot.get("COUNT");
+                    long count = (long)documentSnapshot.get("COUNT");
 
-                for(int i = 1 ;i<=count;i++){
+                    for(int i = 1 ;i<=count;i++){
 
-                    String catName = documentSnapshot.getString("CAT" + String.valueOf(i)+ "_NAME");
-                    String catId = documentSnapshot.getString("CAT" + String.valueOf(i)+ "_ID");
-                    catList.add(new CatModel(catId,catName));
+                        String catName = documentSnapshot.getString("CAT" + String.valueOf(i)+ "_NAME");
+                        String catId = documentSnapshot.getString("CAT" + String.valueOf(i)+ "_ID");
+                        catList.add(new CatModel(catId,catName));
 //                    Toast.makeText(UserDashboard.this, cat,Toast.LENGTH_SHORT).show();
+
+                    }
+
+
+
+                    CatsAdapter catsAdapter = new CatsAdapter(catList,catimgList);
+                    //catsAdapter.addContext(getActivity());
+                    catsAdapter.addContext(UserDashboard.this);
+                    category.setAdapter(catsAdapter);
+
+                    loader.cancel();
 
                 }
 
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new UserFragment()).commit();
-
-                loader.cancel();
-
-
-
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(UserDashboard.this,e.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
     }
 
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId()) {
-            case R.id.nav_profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new UserFragment()).commit();
-                break;
-            case R.id.nav_ref:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new Reference()).commit();
-                break;
 
-        }
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+    public void logout(View view) {
+        FirebaseAuth.getInstance().signOut();//logout
+        startActivity(new Intent(getApplicationContext(),SelectUser.class));
+        finish();
     }
 
     @Override

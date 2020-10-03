@@ -111,56 +111,6 @@ public class SetsActivity extends AppCompatActivity {
 
 
 
-//        firestore.collection("QUIZ")
-//                .whereEqualTo("dummy", "yes")
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                Log.i("sucess", document.getId() + " => " + document.getData());
-//                            }
-//                        } else {
-//                            Log.i("Error getting documents: ", String.valueOf(task.getException()));
-//                        }
-//                    }
-//                });
-
-
-//        firestore.collection("QUIZ").document(cat.getIds())
-//
-//                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//            @Override
-//            public void onSuccess(DocumentSnapshot documentSnapshot) {
-//
-//                long noOfsets = (long)documentSnapshot.get("SETS");
-//
-//                for (int i = 1; i <= noOfsets; i++){
-//
-//                    setsIDs.add(documentSnapshot.getString("SET"+String.valueOf(i)+"_ID"));
-//                }
-//
-//                Log.i("pos",String.valueOf(setsIDs.size()));
-//
-//                SetsAdapter setsAdapter = new SetsAdapter(setsIDs.size());
-//                sets_grid.setAdapter(setsAdapter);
-//                loader.cancel();
-//
-//
-//                //Toast.makeText(SetsActivity.this,selected_cat_index,Toast.LENGTH_SHORT).show();
-//
-//
-//
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Toast.makeText(SetsActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
-//                Log.i("pos",e.getMessage());
-//            }
-//        });
-//    }
 
 
     @Override

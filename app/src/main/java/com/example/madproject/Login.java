@@ -46,13 +46,7 @@ public class Login extends AppCompatActivity {
         pass = findViewById(R.id.password);
         login = findViewById(R.id.login);
 
-//        login.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Login.this, UserDashboard.class);
-//                startActivity(intent);
-//            }
-//        });
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -50,8 +50,8 @@ public class adminHome extends AppCompatActivity {
         adminRefSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(adminHome.this,adminCategory.class);
-//                startActivity(intent);
+                Intent intent = new Intent(adminHome.this,ManageReference.class);
+                startActivity(intent);
             }
         });
 

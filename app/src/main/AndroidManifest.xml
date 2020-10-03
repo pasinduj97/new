@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.madproject">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,42 +11,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".adminHome">
-
-        </activity>
-
-        <activity android:name=".ManageSetsAdmin">
-
-        </activity>
-
+        <activity android:name=".UserAddCat"></activity>
+        <activity android:name=".adminHome"></activity>
         <activity android:name=".SelectUser" />
-        <activity android:name=".SucessActivity" />
+        <activity android:name=".UserLogin" />
         <activity android:name=".QuestionActivity" />
-        <activity android:name=".Answer" />
         <activity android:name=".ManageReference" />
-        <activity android:name=".ManageQuestion" />
-        <activity android:name=".AdminDashboard" />
         <activity android:name=".SetsActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".UserDashboard" />
-        <activity android:name=".ManageSets" />
-        <activity android:name=".ManageCategories"/>
+        <activity android:name=".SucessActivity" />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".Login"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity
             android:name=".Register"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

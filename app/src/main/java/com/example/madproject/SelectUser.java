@@ -24,7 +24,7 @@ public class SelectUser extends AppCompatActivity {
         select_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SelectUser.this, UserDashboard.class);
+                Intent intent = new Intent(SelectUser.this, Register.class);
                 startActivity(intent);
             }
         });

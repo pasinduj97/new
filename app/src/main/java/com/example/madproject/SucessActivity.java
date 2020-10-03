@@ -32,9 +32,6 @@ public class SucessActivity extends AppCompatActivity {
                 Intent intent = new Intent(SucessActivity.this,UserDashboard.class);
                 startActivity(intent);
                 SucessActivity.this.finish();
-//                FragmentManager fm = getSupportFragmentManager();
-//                UserFragment ufrag = new UserFragment();
-//                fm.beginTransaction().replace(R.id.layoutDialogContainer,ufrag).commit();
 
             }
         });

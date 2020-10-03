@@ -65,22 +65,7 @@
         android:hint="@string/prompt_password"
         android:textSize="16dp"/>
 
-    <EditText
-        android:id="@+id/editTextTextPassword2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="460dp"
-        android:padding="15dp"
-        android:background="@drawable/custom_input"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="@string/prompt_confirm_password"
-        android:textSize="16dp"
-        android:layout_marginLeft="50dp"
-        android:fontFamily="@font/robotoregular"
-        android:layout_marginRight="50dp"
-        />
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/registerBtn"
@@ -88,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="530dp"
+        android:layout_marginTop="460dp"
         android:layout_marginRight="50dp"
         app:cardBackgroundColor="@color/navheadcol"
         app:cardElevation="10dp"
@@ -96,7 +81,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/regbtn">
 
             <TextView
                 android:id="@+id/textRegister"
@@ -119,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="530dp"
         android:layout_marginRight="50dp"
         app:cardElevation="0dp">
 
